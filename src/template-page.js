@@ -1,10 +1,11 @@
-
+const generatePage= () => {
+    return `
     <!DOCTYPE html>
     <html>
     <title>FitSta</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="C:UsersaveryOneDriveDesktopCodingstudious-journey-averymnorthassetsstyle.css">
+    <link rel="stylesheet" href="C:\Users\avery\OneDrive\Desktop\Coding\studious-journey-averymnorth\assets\style.css">
     <style>
     html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     </style>
@@ -27,7 +28,7 @@
         </div>
       </div>
       <a href="#" class="bar-item button hide-small right padding-large hover-white" title="My Account">
-        <img src="C:UsersaveryOneDriveDesktopCodingstudious-journey-averymnorthassetsimagesAvatar.jpg" class="circle" style="height:23px;width:23px" alt="Avatar">
+        <img src="C:\Users\avery\OneDrive\Desktop\Coding\studious-journey-averymnorth\assets\images\Avatar.jpg" class="circle" style="height:23px;width:23px" alt="Avatar">
       </a>
      </div>
     </div>
@@ -50,7 +51,7 @@
           <div class="card round white">
             <div class="container">
              <h4 class="center">My Profile</h4>
-             <p class="center"><img src="C:UsersaveryOneDriveDesktopCodingstudious-journey-averymnorthassetsimagesAvatar.jpg" class="circle" style="height:106px;width:106px" alt="Avatar"></p>
+             <p class="center"><img src="C:\Users\avery\OneDrive\Desktop\Coding\studious-journey-averymnorth\assets\images\Avatar.jpg" class="circle" style="height:106px;width:106px" alt="Avatar"></p>
              <hr>
              <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> Designer, UI</p>
              <p><i class="fa fa-home fa-fw margin-right text-theme"></i> Lansing, MI</p>
@@ -274,4 +275,7 @@
     
     </body>
     </html> 
-    
+    `;
+};
+
+module.exports = generatePage;
