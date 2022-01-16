@@ -1,0 +1,16 @@
+{
+    "profiles": [
+        {
+            "id": "0",
+            "first_name": "Avery",
+            "last_name": "North",
+            "city": "Lansing"
+        },
+        {
+            "id": "1",
+            "first_name": "Antonio",
+            "last_name": "Ramirez",
+            "city": "Westland"
+        }
+    ]
+}
