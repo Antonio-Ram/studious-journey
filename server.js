@@ -6,10 +6,10 @@ const app = express();
 
 const { profiles } = require ('./data/profiles');
 
-/*app.get('', (req, res) => {
+app.get('', (req, res) => {
     //want this to prompt a user it sign in or sign up
     res.send('hello!');
-})*/
+})
 
 function filterByQuery(query, profilesArray) {
     let filteredResults = profilesArray;
