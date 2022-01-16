@@ -25,12 +25,26 @@ function filterByQuery(query, profilesArray) {
     return filteredResults;
 }
 
+function findById(id, profilesArray) {
+    const result = profilesArray.filter(profile => profile.id === id) [0];
+    return result;
+}
+
 app.get('/api/profiles', (req,res) => {
     let results = profiles;
     if (req.query) {
         results = filterByQuery(req.query, results);
     }
     res.json(results);
+});
+
+app.get('/api/profiles/:id', (req, res) => {
+    const result = findById(req.params.id, profiles);
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(404);
+    }
 });
 
 app.listen(PORT, () => {
