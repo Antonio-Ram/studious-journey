@@ -9,17 +9,9 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 const { profiles } = require ('./data/profiles');
-
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
-});
-
-/*app.get('', (req, res) => {
-    //want this to prompt a user it sign in or sign up
-    res.send('hello!');
-})*/
 
 function filterByQuery(query, profilesArray) {
     let filteredResults = profilesArray;
@@ -94,4 +86,14 @@ app.post('/api/profiles', (req, res) => {
     const profile = createNewProfile(req.body, profiles);
     res.json(profile);
     }
+});
+
+app.get('/', (req, res) => {
+    //want this to prompt a user it sign in or sign up
+    //code for landing page
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`);
 });
