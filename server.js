@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 app.use(apiRoutes);
-//app.use(htmlRoutes);
+app.use(htmlRoutes);
 
 
 sequelize.sync({ force: false }).then(() => {
