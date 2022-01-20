@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { Model, DataTypes } = require ('sequelize');
 const sequelize = require('../config/connection');
 
@@ -34,6 +35,16 @@ Profile.init(
         }
     },
     {
+        hooks: {
+            async beforeCreate(newProfileData) {
+                newProfileData.password = await bcrypt.hash(newProfileData.password, 10);
+                return newProfileData;
+            },
+            async beforeUpdate(updatedProfileData) {
+                updatedProfileData.password = await bcrypt.hash(updatedProfileData.password, 10);
+                return updatedProfileData;
+            }
+        },
         //Table config options
         sequelize,
         timestamps: false,

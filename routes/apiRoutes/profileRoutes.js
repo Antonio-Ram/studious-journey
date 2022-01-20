@@ -81,6 +81,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     Profile.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
