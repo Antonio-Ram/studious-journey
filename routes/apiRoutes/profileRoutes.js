@@ -89,7 +89,7 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No profile with that email address!'});
             return;
         }
-        res.json({ profile: dbProfileData });
+        //res.json({ profile: dbProfileData });
         //verify user with passport
         const validPassword = dbProfileData.checkPassword(req.body.password);
         if(!validPassword) {
