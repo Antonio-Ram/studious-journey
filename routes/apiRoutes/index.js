@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const profileRoutes = require('../apiRoutes/profileRoutes');
+const profileRoutes = require('./profileRoutes');
 
-router.use(profileRoutes);
+router.use('/profiles', profileRoutes);
 
 module.exports = router;

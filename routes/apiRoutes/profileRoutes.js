@@ -1,4 +1,4 @@
-const router = require('express').Router();
+/*const router = require('express').Router();
 
 const {filterByQuery, findById, createNewProfile, validateProfile } = require ('../../lib/profiles');
 const { profiles } = require('../../data/profiles');
@@ -30,4 +30,91 @@ router.post('/profiles', (req, res) => {
     }
 });
 
-module.exports = router; 
+module.exports = router; */
+
+const router = require('express').Router();
+const { Profile } = require('../../models');
+
+router.get('/', (req, res) => {
+    Profile.findAll({
+        attributes: { exclude: ['password'] }
+    })
+    .then(dbProfileData => res.json(dbProfileData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.get('/:id', (req, res) => {
+    Profile.findOne({
+        attributes: { exclude: ['password'] },
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbProfileData => {
+        if (!dbProfileData) {
+            res.status(404).json({ message: 'No use found with this id' });
+            return;
+        }
+        res.json(dbProfileData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status().json(error);
+    });
+});
+
+router.post('/', (req, res) => {
+    Profile.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+    .then(dbProfileData => res.json (dbProfileData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.put('/:id', (req, res) => {
+    Profile.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbProfileData => {
+        if(!dbProfileData[0]) {
+            res.status(404).json({ message: 'No profile found with this id' });
+            return;
+        }
+        res.json(dbProfileData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    Profile.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbProfileData => {
+        if(!dbProfileData) {
+            res.status(404).json({ message: 'No profile found with this id' });
+            return;
+        }
+        res.json(dbProfileData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+module.exports = router;
