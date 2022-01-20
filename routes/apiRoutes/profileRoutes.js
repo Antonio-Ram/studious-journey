@@ -79,6 +79,27 @@ router.post('/', (req, res) => {
     });
 });
 
+router.post('/login', (req, res) => {
+    Profile.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbProfileData => {
+        if (!dbProfileData) {
+            res.status(400).json({ message: 'No profile with that email address!'});
+            return;
+        }
+        res.json({ profile: dbProfileData });
+        //verify user with passport
+        const validPassword = dbProfileData.checkPassword(req.body.password);
+        if(!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+        res.json({ profile: dbProfileData, message: 'You are now logged in!' });
+    });
+});
+
 router.put('/:id', (req, res) => {
     Profile.update(req.body, {
         individualHooks: true,
