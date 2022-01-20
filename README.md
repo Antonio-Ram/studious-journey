@@ -1,7 +1,7 @@
 
 ## Studious-Journey
 
-A brief descripton of our group project.
+A brief descripton of our group project. 
 
 
 ## Appendix
