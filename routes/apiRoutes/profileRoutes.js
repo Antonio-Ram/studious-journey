@@ -36,7 +36,9 @@ const router = require('express').Router();
 const { Profile } = require('../../models');
 
 router.get('/', (req, res) => {
-    Profile.findAll()
+    Profile.findAll({
+        attributes: { exclude: ['password'] }
+    })
     .then(dbProfileData => res.json(dbProfileData))
     .catch(err => {
         console.log(err);
@@ -46,6 +48,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     Profile.findOne({
+        attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         }
