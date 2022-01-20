@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS profiles_db;
+
+CREATE DATABASE profiles_db;
