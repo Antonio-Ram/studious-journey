@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const profileRoutes = require('./profileRoutes');
-//const htmlRoutes = require('./')
+const htmlRoutes = require('../htmlRoutes')
 
 router.use('/profiles', profileRoutes);
-//router.use('/', htmlRoutes)
+router.use('/', htmlRoutes)
 
 module.exports = router;
